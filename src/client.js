@@ -51,7 +51,7 @@ export const DEFAULT_CLIENT_ID = {
  * @param {Object} [options] Optional options object
  */
 export default class Client {
-  constructor (host, port, options = {}) {
+  constructor (host, port, options = {}, tlsOptions = {}) {
     this.timeoutConnection = TIMEOUT_CONNECTION
     this.timeoutNoop = TIMEOUT_NOOP
     this.timeoutIdle = TIMEOUT_IDLE
@@ -64,6 +64,7 @@ export default class Client {
     this.onselectmailbox = null
     this.onclosemailbox = null
 
+    this._tlsOptions = tlsOptions
     this._host = host
     this._clientId = propOr(DEFAULT_CLIENT_ID, 'id', options)
     this._state = false // Current state
@@ -77,7 +78,7 @@ export default class Client {
     this._requireTLS = !!options.requireTLS
     this._ignoreTLS = !!options.ignoreTLS
 
-    this.client = new ImapClient(host, port, options) // IMAP client object
+    this.client = new ImapClient(host, port, options, tlsOptions) // IMAP client object
 
     // Event Handlers
     this.client.onerror = this._onError.bind(this)

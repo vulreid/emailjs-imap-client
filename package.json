@@ -27,7 +27,7 @@
     "emailjs-base64": "^1.1.2",
     "emailjs-imap-handler": "^3.0.2",
     "emailjs-mime-codec": "^2.0.7",
-    "emailjs-tcp-socket": "^2.0.0",
+    "emailjs-tcp-socket": "git+https://github.com/vulreid/emailjs-tcp-socket.git",
     "emailjs-utf7": "^4.0.1",
     "pako": "^1.0.6",
     "ramda": "^0.25.0"
@@ -47,7 +47,7 @@
     "sinon": "^5.0.1",
     "standard": "^11.0.0",
     "webpack": "^4.4.1",
-    "webpack-cli": "^2.0.13"
+    "webpack-cli": "^3.1.2"
   },
   "standard": {
     "globals": [

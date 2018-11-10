@@ -60,12 +60,13 @@ const TIMEOUT_SOCKET_MULTIPLIER = 0.1
  * @param {String} [options.compressionWorkerPath] offloads de-/compression computation to a web worker, this is the path to the browserified emailjs-compressor-worker.js
  */
 export default class Imap {
-  constructor (host, port, options = {}) {
+  constructor (host, port, options = {}, tlsOptions = {}) {
     this.timeoutEnterIdle = TIMEOUT_ENTER_IDLE
     this.timeoutSocketLowerBound = TIMEOUT_SOCKET_LOWER_BOUND
     this.timeoutSocketMultiplier = TIMEOUT_SOCKET_MULTIPLIER
 
     this.options = options
+    this.tlsOptions = tlsOptions
 
     this.port = port || (this.options.useSecureTransport ? 993 : 143)
     this.host = host || 'localhost'
@@ -125,7 +126,8 @@ export default class Imap {
         binaryType: 'arraybuffer',
         useSecureTransport: this.secureMode,
         ca: this.options.ca
-      })
+      },
+      this.tlsOptions)
 
       // allows certificate handling for platform w/o native tls support
       // oncert is non standard so setting it might throw if the socket object is immutable
