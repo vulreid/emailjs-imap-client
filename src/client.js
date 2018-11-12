@@ -28,8 +28,8 @@ import {
 } from './special-use'
 
 export const TIMEOUT_CONNECTION = 90 * 1000 // Milliseconds to wait for the IMAP greeting from the server
-export const TIMEOUT_NOOP = 60 * 1000 // Milliseconds between NOOP commands while idling
-export const TIMEOUT_IDLE = 60 * 1000 // Milliseconds until IDLE command is cancelled
+export const TIMEOUT_NOOP = 8 * 1000 // Milliseconds between NOOP commands while idling
+export const TIMEOUT_IDLE = 8 * 1000 // Milliseconds until IDLE command is cancelled
 
 export const STATE_CONNECTING = 1
 export const STATE_NOT_AUTHENTICATED = 2
